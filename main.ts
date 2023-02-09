@@ -74,9 +74,9 @@ function giveIntroduction () {
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
         `)
-    showInstruction("Move with the left and right buttons.")
-    showInstruction("Jump with the up or A button.")
-    showInstruction("Double jump by pressing jump again.")
+    showInstruction("Moverse con teclas derecha e Izquierda")
+    showInstruction("Saltar con botón A")
+    showInstruction("Doble Salto presionar 2 veces letra A")
 }
 controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
     attemptJump()
@@ -276,6 +276,7 @@ function animateIdle () {
 }
 function setLevelTileMap (level: number) {
     clearGame()
+    info.startCountdown(20)
     if (level == 0) {
         tiles.setTilemap(tilemap`level`)
     } else if (level == 1) {
@@ -705,7 +706,7 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`tile1`, function (sprite, loc
     info.changeLifeBy(1)
     currentLevel += 1
     if (hasNextLevel()) {
-        game.splash("Next level unlocked!")
+        game.splash("¡Siguiente Nivel!")
         setLevelTileMap(currentLevel)
     } else {
         game.over(true, effects.confetti)
